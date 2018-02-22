@@ -22,7 +22,7 @@ import banco.rnegocio.impl.*;
 import banco.accesodatos.*;
 import banco.rnegocio.dao.ICiudad;
 public class FrmListado_Ciudad {
-       private TableView<Ciudad> tblCiudad;
+    private TableView<Ciudad> tblCiudad;
     private Label titulo;
     private TableColumn<Ciudad, Integer> cmlCodCiudad;
     private TableColumn<Ciudad, String> cmlNombreCiudad;

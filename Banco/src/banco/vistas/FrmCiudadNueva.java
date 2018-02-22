@@ -7,7 +7,7 @@ package banco.vistas;
 
 import banco.rnegocio.entidades.Ciudad;
 import banco.rnegocio.impl.CiudadImpl;
-import banco.rnenogio.dao.ICiudad;
+import banco.rnegocio.dao.ICiudad;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
