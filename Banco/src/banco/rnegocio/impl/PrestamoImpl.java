@@ -22,14 +22,15 @@ public class PrestamoImpl implements IPrestamo{
     
       public int insertar(Prestamo prestamo) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into prestamo  values "
+        String sql = "insert into prestamos  values "
                 + "(?,?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, prestamo.getId_prestamo()));
-        lstPar.add(new Parametro(2, prestamo.getImporte()));
-        lstPar.add(new Parametro(3, prestamo.getAbono()));
-        lstPar.add(new Parametro(4, prestamo.getFecha()));
-        lstPar.add(new Parametro(5, prestamo.getSucursal().getId_sucursal()));
+        lstPar.add(new Parametro(3, prestamo.getImporte()));
+        lstPar.add(new Parametro(4, prestamo.getAbono()));
+        lstPar.add(new Parametro(5, prestamo.getFecha()));
+        lstPar.add(new Parametro(6, prestamo.getValor()));
+        lstPar.add(new Parametro(2, prestamo.getSucursal().getId_sucursal()));
 
         Conexion con = null;
         try {
@@ -48,15 +49,16 @@ public class PrestamoImpl implements IPrestamo{
     @Override
     public int modificar(Prestamo prestamo) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE prestamo"
+        String sql = "UPDATE prestamos"
                 + "   SET id_prestamo=?, importe=?, abono=?, fecha=?, id_sucursal=?, "
                         + " where id_prestamo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, prestamo.getId_prestamo()));
-        lstPar.add(new Parametro(2, prestamo.getImporte()));
-        lstPar.add(new Parametro(3, prestamo.getAbono()));
-        lstPar.add(new Parametro(4, prestamo.getFecha()));
-        lstPar.add(new Parametro(5, prestamo.getSucursal().getId_sucursal()));
+        lstPar.add(new Parametro(3, prestamo.getImporte()));
+        lstPar.add(new Parametro(4, prestamo.getAbono()));
+        lstPar.add(new Parametro(5, prestamo.getFecha()));
+        lstPar.add(new Parametro(6, prestamo.getValor()));
+        lstPar.add(new Parametro(2, prestamo.getSucursal().getId_sucursal()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -75,7 +77,7 @@ public class PrestamoImpl implements IPrestamo{
     @Override
 public int eliminar(Prestamo prestamo) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM prestamo  where codigo_prestamo=?";
+         String sql = "DELETE FROM prestamos  where codigo_prestamo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, prestamo.getId_prestamo()));       
         Conexion con = null;
@@ -96,7 +98,7 @@ public int eliminar(Prestamo prestamo) throws Exception {
     @Override
     public Prestamo obtener(int codigo) throws Exception {
         Prestamo prestamo = null;
-        String sql = "SELECT *   FROM prestamo where id_prestamo=?;";
+        String sql = "SELECT *   FROM prestamos where id_prestamo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -128,7 +130,7 @@ public int eliminar(Prestamo prestamo) throws Exception {
     
     public List<Prestamo> obtener() throws Exception {
         List<Prestamo> lista = new ArrayList<>();
-         String sql = "SELECT *   FROM prestamo ";        
+         String sql = "SELECT *   FROM prestamos ";        
         Conexion con = null;
         try {
             con = new Conexion();
