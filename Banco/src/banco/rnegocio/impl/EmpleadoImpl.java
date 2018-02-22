@@ -7,7 +7,7 @@ package banco.rnegocio.impl;
 
 import banco.accesodatos.*;
 import banco.rnegocio.entidades.*;
-import banco.rnenogio.dao.IEmpleado;
+import banco.rnegocio.dao.IEmpleado;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;

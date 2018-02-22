@@ -6,7 +6,7 @@
 package banco.vistas;
 import banco.rnegocio.entidades.Empleado;
 import banco.rnegocio.impl.EmpleadoImpl;
-import banco.rnenogio.dao.IEmpleado;
+import banco.rnegocio.dao.IEmpleado;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;

@@ -5,9 +5,10 @@
  */
 package banco.rnegocio.impl;
 
+import banco.rnegocio.dao.ICuenta;
+import banco.rnegocio.dao.ICuenta_Credito;
 import banco.accesodatos.*;
 import banco.rnegocio.entidades.*;
-import banco.rnenogio.dao.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;

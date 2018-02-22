@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco.rnenogio.dao;
+package banco.rnegocio.dao;
 
 import banco.rnegocio.entidades.Inspector;
 import java.util.ArrayList;

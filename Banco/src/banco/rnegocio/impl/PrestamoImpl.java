@@ -5,9 +5,10 @@
  */
 package banco.rnegocio.impl;
 
+import banco.rnegocio.dao.IPrestamo;
+import banco.rnegocio.dao.ISucursal;
 import banco.accesodatos.*;
 import banco.rnegocio.entidades.*;
-import banco.rnenogio.dao.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class PrestamoImpl implements IPrestamo{
       public int insertar(Prestamo prestamo) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "insert into prestamos  values "
-                + "(?,?,?,?,?)";
+                + "(?,?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, prestamo.getId_prestamo()));
         lstPar.add(new Parametro(3, prestamo.getImporte()));
