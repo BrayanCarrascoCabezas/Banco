@@ -80,5 +80,10 @@ public class Prestamo {
         this.sucursal = sucursal;
     }
 
+    @Override
+    public String toString() {
+        return Integer.toString(id_prestamo);
+    }
+
  
 }

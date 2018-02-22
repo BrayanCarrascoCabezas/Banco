@@ -669,11 +669,9 @@ public class FrmMenuPrincipal extends JFrame {
 //        frm.setVisible(true);
     }
     public void mniNuevoInspectorActionPerformed(ActionEvent e) {
-//        FrmInspectorNuevo frm = new FrmInspectorNuevo();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmInspectorNuevo frm = new FrmInspectorNuevo();
+        dkpEscritorio.add(frm, BorderLayout.WEST);
+        frm.setVisible(true);
     }
     public void mniNuevoPagoActionPerformed(ActionEvent e) {
 //        FrmPagoNuevo frm = new FrmPagoNuevo();

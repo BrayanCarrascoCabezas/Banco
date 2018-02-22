@@ -23,7 +23,7 @@ public class EmpleadoImpl implements IEmpleado{
      
     public int insertar(Empleado empleado) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into empleado  values (?,?,?,?,?)";
+        String sql = "insert into Empleado  values (?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, empleado.getId_empleado()));
         lstPar.add(new Parametro(2, empleado.getNombres()));
@@ -46,8 +46,8 @@ public class EmpleadoImpl implements IEmpleado{
     @Override
     public int modificar(Empleado empleado) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "update  empleado set id_empleado=?,nombres=?,apellidos=?"
-                + ",fecha_ingreso=?,antiguedad=? where id_empleado=?";
+        String sql = "update  Empleado set idEmpleado=?,nombres=?,apellidos=?"
+                + ",fecha_ingreso=?,antiguedad=? where idEmpleado=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, empleado.getId_empleado()));
         lstPar.add(new Parametro(2, empleado.getNombres()));
@@ -70,7 +70,7 @@ public class EmpleadoImpl implements IEmpleado{
     @Override
     public int eliminar(Empleado empleado) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE * FROM empleado  where id_empleado=?";
+         String sql = "DELETE * FROM empleado  where idEmpleado=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, empleado.getId_empleado()));
         lstPar.add(new Parametro(2, empleado.getNombres()));
@@ -95,7 +95,7 @@ public class EmpleadoImpl implements IEmpleado{
     @Override
     public Empleado obtener(int codigo) throws Exception {
         Empleado empleado = null;
-         String sql = "select * from empleado where id_empleado=?"; 
+         String sql = "select * from empleado where idEmpleado=?"; 
           List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -122,7 +122,7 @@ public class EmpleadoImpl implements IEmpleado{
     @Override
     public List<Empleado> obtener() throws Exception {
         List<Empleado> lista = new ArrayList<>();
-         String sql = "select *  from empleado";        
+         String sql = "select *  from Empleado";        
         Conexion con = null;
         try {
             con = new Conexion();

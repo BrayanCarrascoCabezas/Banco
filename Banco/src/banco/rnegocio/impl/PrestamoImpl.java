@@ -22,8 +22,8 @@ public class PrestamoImpl implements IPrestamo{
     
       public int insertar(Prestamo prestamo) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into prestamo  values "
-                + "(?,?,?,?,?,?)";
+        String sql = "insert into prestamos  values "
+                + "(?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, prestamo.getId_prestamo()));
         lstPar.add(new Parametro(2, prestamo.getImporte()));
@@ -96,7 +96,7 @@ public int eliminar(Prestamo prestamo) throws Exception {
     @Override
     public Prestamo obtener(int codigo) throws Exception {
         Prestamo prestamo = null;
-        String sql = "SELECT *   FROM prestamo where id_prestamo=?;";
+        String sql = "SELECT *   FROM prestamos where id_prestamo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -107,12 +107,13 @@ public int eliminar(Prestamo prestamo) throws Exception {
             while (rst.next()) {
                 prestamo = new Prestamo();
                 prestamo.setId_prestamo(rst.getInt(1));
-                prestamo.setAbono(rst.getInt(3));
-                prestamo.setImporte(rst.getInt(2));
-                prestamo.setFecha(rst.getDate(4));
-                 ISucursal sucursaldao=new SucursalImpl();
-                 Sucursal sucursal= sucursaldao.obtener(rst.getInt(5));
-                 prestamo.setSucursal(sucursal);
+                prestamo.setAbono(rst.getInt(4));
+                prestamo.setImporte(rst.getInt(3));
+                prestamo.setFecha(rst.getDate(5));
+                prestamo.setValor(rst.getInt(6));
+                ISucursal sucursaldao=new SucursalImpl();
+                Sucursal sucursal= sucursaldao.obtener(rst.getInt(2));
+                prestamo.setSucursal(sucursal);
 
             }
         } catch (Exception e) {
@@ -128,7 +129,7 @@ public int eliminar(Prestamo prestamo) throws Exception {
     
     public List<Prestamo> obtener() throws Exception {
         List<Prestamo> lista = new ArrayList<>();
-         String sql = "SELECT *   FROM prestamo ";        
+         String sql = "SELECT *   FROM prestamos ";        
         Conexion con = null;
         try {
             con = new Conexion();
@@ -139,12 +140,13 @@ public int eliminar(Prestamo prestamo) throws Exception {
          
                 prestamo = new Prestamo();
                 prestamo.setId_prestamo(rst.getInt(1));
-                prestamo.setAbono(rst.getInt(3));
-                prestamo.setImporte(rst.getInt(2));
-                prestamo.setFecha(rst.getDate(4));
-                 ISucursal sucursaldao=new SucursalImpl();
-                 Sucursal sucursal= sucursaldao.obtener(rst.getInt(5));
-                 prestamo.setSucursal(sucursal);
+                prestamo.setAbono(rst.getInt(4));
+                prestamo.setImporte(rst.getInt(3));
+                prestamo.setFecha(rst.getDate(5));
+                prestamo.setValor(rst.getInt(6));
+                ISucursal sucursaldao=new SucursalImpl();
+                Sucursal sucursal= sucursaldao.obtener(rst.getInt(2));
+                prestamo.setSucursal(sucursal);
                 lista.add(prestamo);
             }
         } catch (Exception e) {

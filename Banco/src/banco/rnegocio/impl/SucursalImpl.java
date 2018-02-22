@@ -22,7 +22,7 @@ public class SucursalImpl implements ISucursal{
      
     public int insertar(Sucursal sucursal) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into sucursal  values "
+        String sql = "insert into sucursales  values "
                 + "(?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, sucursal.getId_sucursal()));
@@ -47,8 +47,8 @@ public class SucursalImpl implements ISucursal{
     @Override
     public int modificar(Sucursal sucursal) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE sucursal"
-                + "   SET id_sucursal=?, id_empleado=?, id_ciudad=? where id_sucursal=?";
+        String sql = "UPDATE sucursales"
+                + "   SET idsucursal=?, id_empleado=?, id_ciudad=? where idSucursal=?";
         List<Parametro> lstPar = new ArrayList<>();
      lstPar.add(new Parametro(1, sucursal.getId_sucursal()));
         lstPar.add(new Parametro(2, sucursal.getEmpleado().getId_empleado()));
@@ -71,7 +71,7 @@ public class SucursalImpl implements ISucursal{
     @Override
     public int eliminar(Sucursal sucursal) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM sucursal  where id_sucursal=?";
+         String sql = "DELETE FROM sucursales  where idSucursal=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, sucursal.getId_sucursal()));       
         Conexion con = null;
@@ -92,7 +92,7 @@ public class SucursalImpl implements ISucursal{
     @Override
     public Sucursal obtener(int codigo) throws Exception {
         Sucursal sucursal = null;
-        String sql = "SELECT *   FROM sucursal where id_sucursal=?;";
+        String sql = "SELECT *   FROM sucursales where idSucursal=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -123,7 +123,7 @@ public class SucursalImpl implements ISucursal{
     @Override
     public List<Sucursal> obtener() throws Exception {
         List<Sucursal> lista = new ArrayList<>();
-         String sql = "SELECT *   FROM sucursal ";        
+         String sql = "SELECT *   FROM sucursales ";        
         Conexion con = null;
         try {
             con = new Conexion();

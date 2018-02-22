@@ -26,10 +26,10 @@ public class InspectorImpl implements IInspector{
                 + "(?,?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, inspector.getCodigo()));
-        lstPar.add(new Parametro(2, inspector.getNombre()));
-        lstPar.add(new Parametro(3, inspector.getDireccion()));
-        lstPar.add(new Parametro(4, inspector.getTitulo()));
-        lstPar.add(new Parametro(5, inspector.getPrestamo().getId_prestamo()));
+        lstPar.add(new Parametro(3, inspector.getNombre()));
+        lstPar.add(new Parametro(4, inspector.getDireccion()));
+        lstPar.add(new Parametro(5, inspector.getTitulo()));
+        lstPar.add(new Parametro(2, inspector.getPrestamo().getId_prestamo()));
   
         Conexion con = null;
         try {
