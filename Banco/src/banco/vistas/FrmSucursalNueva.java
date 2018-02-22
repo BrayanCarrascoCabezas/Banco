@@ -7,7 +7,7 @@ package banco.vistas;
 
 import banco.rnegocio.entidades.*;
 import banco.rnegocio.impl.*;
-import banco.rnenogio.dao.*;
+import banco.rnegocio.dao.*;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import java.awt.BorderLayout;
 import java.awt.Color;
