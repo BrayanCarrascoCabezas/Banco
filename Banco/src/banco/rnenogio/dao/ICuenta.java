@@ -21,5 +21,5 @@ public interface ICuenta {
 
     public Cuenta obtener(int codigo) throws Exception;
 
-    public ArrayList<Cuenta> obtener() throws Exception;  
+    public List<Cuenta> obtener() throws Exception;  
 }

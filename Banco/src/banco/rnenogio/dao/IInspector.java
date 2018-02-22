@@ -7,6 +7,7 @@ package banco.rnenogio.dao;
 
 import banco.rnegocio.entidades.Inspector;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,5 +22,5 @@ public interface IInspector {
 
     public Inspector obtener(int codigo) throws Exception;
 
-    public ArrayList<Inspector> obtener() throws Exception;
+    public List<Inspector> obtener() throws Exception;
 }

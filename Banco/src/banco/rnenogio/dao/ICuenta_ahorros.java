@@ -7,6 +7,7 @@ package banco.rnenogio.dao;
 
 import banco.rnegocio.entidades.Cuenta_Ahorros;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,5 +22,5 @@ public interface ICuenta_ahorros {
 
     public Cuenta_Ahorros  obtener(int codigo) throws Exception;
 
-    public ArrayList<Cuenta_Ahorros> obtener() throws Exception;
+    public List<Cuenta_Ahorros> obtener() throws Exception;
 }

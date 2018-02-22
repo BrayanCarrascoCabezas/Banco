@@ -7,12 +7,14 @@ package banco.rnenogio.dao;
 
 import banco.rnegocio.entidades.Pago;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author WILCXMAC
  */
 public interface Ipago {
+        public int insertar(Pago pago) throws Exception;
     
     public int modificar(Pago pago) throws Exception;
 
@@ -20,5 +22,5 @@ public interface Ipago {
 
     public Pago obtener(int codigo) throws Exception;
 
-    public ArrayList<Pago> obtener() throws Exception;  
+    public List<Pago> obtener() throws Exception;  
 }

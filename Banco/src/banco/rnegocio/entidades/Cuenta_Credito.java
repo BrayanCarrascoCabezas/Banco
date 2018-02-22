@@ -10,16 +10,16 @@ import java.sql.*;
 
 public class Cuenta_Credito {
     private int n_cuenta;
-    private int codigo_cuenta;
+    private Cuenta cuenta;
     private int saldo;
     private int u_sobregiro;
 
     public Cuenta_Credito() {
     }
 
-    public Cuenta_Credito(int n_cuenta, int codigo_cuenta, int saldo, int u_sobregiro) {
+    public Cuenta_Credito(int n_cuenta, Cuenta cuenta, int saldo, int u_sobregiro) {
         this.n_cuenta = n_cuenta;
-        this.codigo_cuenta = codigo_cuenta;
+        this.cuenta = cuenta;
         this.saldo = saldo;
         this.u_sobregiro = u_sobregiro;
     }
@@ -32,12 +32,12 @@ public class Cuenta_Credito {
         this.n_cuenta = n_cuenta;
     }
 
-    public int getCodigo_cuenta() {
-        return codigo_cuenta;
+    public Cuenta getCuenta() {
+        return cuenta;
     }
 
-    public void setCodigo_cuenta(int codigo_cuenta) {
-        this.codigo_cuenta = codigo_cuenta;
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
 
     public int getSaldo() {
@@ -55,5 +55,7 @@ public class Cuenta_Credito {
     public void setU_sobregiro(int u_sobregiro) {
         this.u_sobregiro = u_sobregiro;
     }
+
+   
 }
 
