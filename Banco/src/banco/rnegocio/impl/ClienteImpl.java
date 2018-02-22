@@ -21,7 +21,7 @@ public class ClienteImpl implements ICliente{
     
      @Override
      
-     public int ingresar(Cliente cliente) throws Exception {
+     public int insertar(Cliente cliente) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "insert into cliente  values "
                 + "(?,?,?,?,?,?,?)";

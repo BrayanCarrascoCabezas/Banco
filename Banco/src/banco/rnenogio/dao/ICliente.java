@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface ICliente {
     
-         public int ingresar(Cliente cliente) throws Exception;
+         public int insertar(Cliente cliente) throws Exception;
 
     public int modificar(Cliente cliente) throws Exception;
 
