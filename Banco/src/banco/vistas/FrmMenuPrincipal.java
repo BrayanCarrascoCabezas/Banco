@@ -637,32 +637,32 @@ public class FrmMenuPrincipal extends JFrame {
 
     public void mniNuevoClienteActionPerformed(ActionEvent e) {
         FrmClienteNuevo frm = new FrmClienteNuevo();
-        dkpEscritorio.add(frm, BorderLayout.WEST);
+        dkpEscritorio.add(frm);
         frm.setVisible(true);
     }
 
     public void mniNuevoCuentaActionPerformed(ActionEvent e) {
-//        FrmCuentaNuevo frm = new FrmCuentaNuevo();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmCuentaNueva frm = new FrmCuentaNueva();
+
+        dkpEscritorio.add(frm);
+
+        frm.setVisible(true);
     }
 
     public void mniNuevoCuenta_AhorrosActionPerformed(ActionEvent e) {
-//        FrmDetalle_PrestamoNueva frm = new FrmDetalle_PrestamoNueva();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmCuenta_Ahorros frm = new FrmCuenta_Ahorros();
+
+        dkpEscritorio.add(frm);
+
+        frm.setVisible(true);
     }
 
     public void mniNuevoCuenta_CreditoActionPerformed(ActionEvent e) {
-//        FrmCuenta_CreditoNuevo frm = new FrmCuenta_CreditoNuevo();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmCuenta_Credito frm = new FrmCuenta_Credito();
+
+        dkpEscritorio.add(frm, BorderLayout.WEST);
+
+        frm.setVisible(true);
     }
     public void mniNuevoEmpleadoActionPerformed(ActionEvent e) {
 //        FrmEmpleadoNuevo frm = new FrmEmpleadoNuevo();

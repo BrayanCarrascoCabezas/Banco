@@ -21,16 +21,17 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FrmClienteNuevo extends JInternalFrame{
+public class FrmClienteNuevo extends JFrame{
     JLabel lblTitulo,lblCodigo,lblNombres,lblApellidos,lblCedula,lblCelular,lblEmail,lblPrestamo;
     JTextField txtCodigo,txtNombres,txtApellidos,txtCedula,txtCelular,txtEmail;
-    JComboBox cmbPrestamo;
+    JComboBox <Prestamo>cmbPrestamo;
     List<Prestamo> lstprestamo;
     JPanel pnlSuperior,pnlCentral,pnlInferior;
     JButton btnAceptar,btnLimpiar;
@@ -47,7 +48,7 @@ public class FrmClienteNuevo extends JInternalFrame{
         pnlInferior.setLayout(new GridLayout(1,2,5,5));     
         
         lblTitulo = new JLabel("DATOS DEL CLIENTE");
-                
+               
         lblCodigo= new JLabel("CODIGO:");
         lblCedula=new JLabel("CEDULA");
         lblNombres= new JLabel(" NOMBRE:");
@@ -55,13 +56,15 @@ public class FrmClienteNuevo extends JInternalFrame{
         lblCelular=new JLabel("CELULAR");
         lblEmail=new JLabel("EMAIL");
         lblPrestamo=new JLabel("PRESTAMO");
-        
         txtCodigo = new JTextField(2);
         txtNombres= new JTextField(2);
         txtApellidos= new JTextField(2);
         txtCelular= new JTextField(2);
+        txtCedula= new JTextField(2);
         txtEmail= new JTextField(2);
-        cmbPrestamo=new JComboBox(lstprestamo.toArray());
+      
+         cargarCategoria();
+        cmbPrestamo=new JComboBox(lstprestamo.toArray());   
         
 
         btnLimpiar= new JButton("Limpiar");
@@ -102,7 +105,7 @@ public class FrmClienteNuevo extends JInternalFrame{
         this.add(pnlSuperior, BorderLayout.NORTH);
         this.add(pnlCentral, BorderLayout.CENTER);
         this.add(pnlInferior, BorderLayout.SOUTH);  
-        this.setClosable(true);
+//        this.setClosable(true);
     }
  
     public void btnAceptarActionListener(ActionEvent e){
@@ -135,13 +138,21 @@ public class FrmClienteNuevo extends JInternalFrame{
         }
       
     }  
+    
     public void cargarCategoria() {
         try {
        IPrestamo cat=new PrestamoImpl();
        lstprestamo=cat.obtener();
    
-        } catch (Exception e) {System.out.println("ERROR"+e.getMessage());
+        } catch (Exception e) {System.out.println("ERROR ::"+e.getMessage());
         }
 }
+    
+    
+    public static void main(String[] args) {
+        FrmClienteNuevo frm= new FrmClienteNuevo();
+        frm.setVisible(true);
+                
+    }
 }
 
