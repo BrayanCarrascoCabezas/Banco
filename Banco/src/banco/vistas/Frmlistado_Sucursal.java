@@ -21,63 +21,51 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.stage.*;
 import javafx.scene.image.*;
+import banco.rnegocio.dao.*;
 import banco.rnegocio.entidades.*;
 import banco.rnegocio.impl.*;
 import banco.accesodatos.*;
-import banco.rnegocio.dao.ISucursal;
+import java.awt.BorderLayout;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-public class Frmlistado_Sucursal {
-    private TableView<Sucursal> tblSucursal;
-    private Label titulo;
-    private TableColumn<Sucursal, Integer> cmlCodsucursal;
-    private TableColumn<Sucursal, Empleado> cmlid_empleado;
-    private TableColumn<Sucursal, Ciudad> cmlCodCiudad;
+public class Frmlistado_Sucursal extends JInternalFrame {
+  JLabel titulo;
+    JTable tabla;
+    DefaultTableModel modelo;
 
-    private VBox pnlFinal;
-    
-      public Frmlistado_Sucursal() {
+    public Frmlistado_Sucursal() {
 
-        titulo = new Label("LISTADO DE SUCURSAL");
-        titulo.setFont(Font.font("News701 BT", 20));
-        tblSucursal = new TableView();
-        cmlCodsucursal = new TableColumn<>("Codigo Sucursal");
-        cmlid_empleado = new TableColumn<>("Empleado");
-        cmlCodCiudad = new TableColumn<>("Ciudad");
-       
-        tblSucursal.getColumns().addAll(cmlCodsucursal, cmlid_empleado, cmlCodCiudad);
-        cargarSucursal();
-        pnlFinal = new VBox();
-        Image fondoFinal = new Image("file:src\\kardex\\multimedia\\images\\fondo.jpg");
-        BackgroundImage fondo = new BackgroundImage(fondoFinal, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        pnlFinal.setBackground(new Background(fondo));
-        pnlFinal.setStyle("-fx-padding: 10; -fx-border-color: orange ; -fx-border-width: 2px");
-        pnlFinal.getChildren().addAll(titulo, tblSucursal);
-        pnlFinal.setAlignment(Pos.CENTER);
+        this.setSize(800, 600);
+        this.setLayout(new BorderLayout());
+        this.setClosable(true);
+        titulo = new JLabel("LISTADO DE INSPECTORES");
+        tabla = new JTable();
+        this.add(titulo, BorderLayout.NORTH);
+        this.add(tabla, BorderLayout.CENTER);
+
+        cargarTabla();
+
     }
 
-    public VBox getPnlFinal() {
-        return pnlFinal;
-    }
+    public void cargarTabla() {
+        modelo = new DefaultTableModel();
 
-    public void cargarSucursal() {
-        List<Sucursal> listSucursal = new ArrayList<>();
-        ISucursal suDao = new SucursalImpl();
 
+        List<Sucursal> lista = new ArrayList<>();
         try {
-            listSucursal = suDao.obtener();
-            cmlCodsucursal.setCellValueFactory(new PropertyValueFactory<>("codigoSucursal"));
-            cmlid_empleado.setCellValueFactory(new PropertyValueFactory<>("empleado"));
-            cmlCodCiudad.setCellValueFactory(new PropertyValueFactory<>("ciudad"));
-            tblSucursal.getItems().addAll(listSucursal);
+            ISucursal estDao = new SucursalImpl();
+            lista = estDao.obtener();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            Group ptnError = new Group();
-            ptnError.getChildren().add(new Label("Error: " + e.getMessage()));
-            Scene error = new Scene(ptnError, 0, 0);
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
-    }
+        for (Sucursal est : lista) {
+            modelo.addRow(new Object[]{est.getId_sucursal(),est.getEmpleado().getNombres(),est.getCiudad().getNombre()});
+        }
+        tabla.setModel(modelo);
 }
-
-
-
-
+    }
