@@ -50,14 +50,14 @@ public class InspectorImpl implements IInspector{
     public int modificar(Inspector inspector) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE inspector"
-                + "   SET codigo=?, nombre=?, direccion=?, titulo=?, id_prestamo=?, "
-                + " where codigo_inspector=?";
+                + "   SET idPrestamo=?, nombre=?, direccion=?, titulo=?,  "
+                + " where idInspector=?";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, inspector.getCodigo()));
+        lstPar.add(new Parametro(5, inspector.getCodigo()));
         lstPar.add(new Parametro(2, inspector.getNombre()));
         lstPar.add(new Parametro(3, inspector.getDireccion()));
         lstPar.add(new Parametro(4, inspector.getTitulo()));
-        lstPar.add(new Parametro(5, inspector.getPrestamo().getId_prestamo()));
+        lstPar.add(new Parametro(1, inspector.getPrestamo().getId_prestamo()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -97,7 +97,7 @@ public class InspectorImpl implements IInspector{
     @Override
     public Inspector obtener(int codigo) throws Exception {
         Inspector inspector = null;
-        String sql = "SELECT *   FROM inspector where codigo=?;";
+        String sql = "SELECT *   FROM inspector where idInspector=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;

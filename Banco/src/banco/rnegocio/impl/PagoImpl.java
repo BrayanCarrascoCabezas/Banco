@@ -27,9 +27,9 @@ public class PagoImpl implements Ipago{
                 + "(?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, pago.getId_pago()));
-        lstPar.add(new Parametro(2, pago.getFecha()));
-        lstPar.add(new Parametro(3, pago.getValor()));
-        lstPar.add(new Parametro(4, pago.getPrestamo().getId_prestamo()));
+        lstPar.add(new Parametro(3, pago.getFecha()));
+        lstPar.add(new Parametro(4, pago.getValor()));
+        lstPar.add(new Parametro(2, pago.getPrestamo().getId_prestamo()));
   
         Conexion con = null;
         try {
@@ -49,14 +49,14 @@ public class PagoImpl implements Ipago{
     public int modificar(Pago pago) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE pago"
-                + "   SET id_pago=?, fecha=?, valor=?, id_prestamo=?, "
-                + " where id_pago=?";
+                + "   SET  idPrestamo=?, fecha=?, valor=? "
+                + " where idPago=?";
         List<Parametro> lstPar = new ArrayList<>();
       
-        lstPar.add(new Parametro(1, pago.getId_pago()));
+        lstPar.add(new Parametro(4, pago.getId_pago()));
         lstPar.add(new Parametro(2, pago.getFecha()));
         lstPar.add(new Parametro(3, pago.getValor()));
-        lstPar.add(new Parametro(4, pago.getPrestamo().getId_prestamo()));
+        lstPar.add(new Parametro(1, pago.getPrestamo().getId_prestamo()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -75,7 +75,7 @@ public class PagoImpl implements Ipago{
     @Override
     public int eliminar(Pago pago) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM pago  where id_pago=?";
+         String sql = "DELETE FROM pago  where idPago=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, pago.getId_pago()));       
         Conexion con = null;
@@ -96,7 +96,7 @@ public class PagoImpl implements Ipago{
     @Override
     public Pago obtener(int codigo) throws Exception {
         Pago pago = null;
-        String sql = "SELECT *   FROM pago where id_pago=?;";
+        String sql = "SELECT *   FROM pago where idPago=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -107,12 +107,12 @@ public class PagoImpl implements Ipago{
             while (rst.next()) {
                 pago = new Pago();
                 pago.setId_pago(rst.getInt(1));
-                pago.setFecha(rst.getDate(2));
-                pago.setValor(rst.getInt(3));
+                pago.setFecha(rst.getDate(3));
+                pago.setValor(rst.getInt(4));
             
    
                 IPrestamo prestamodao = new PrestamoImpl();
-                Prestamo prestamo = prestamodao.obtener(rst.getInt(4));
+                Prestamo prestamo = prestamodao.obtener(rst.getInt(2));
                 pago.setPrestamo(prestamo);
             }
         } catch (Exception e) {
@@ -137,12 +137,12 @@ public class PagoImpl implements Ipago{
             while (rst.next()) {
                 pago = new Pago();
                  pago.setId_pago(rst.getInt(1));
-                pago.setFecha(rst.getDate(2));
-                pago.setValor(rst.getInt(3));
+                pago.setFecha(rst.getDate(3));
+                pago.setValor(rst.getInt(4));
             
    
                 IPrestamo prestamodao = new PrestamoImpl();
-                Prestamo prestamo = prestamodao.obtener(rst.getInt(4));
+                Prestamo prestamo = prestamodao.obtener(rst.getInt(2));
                 pago.setPrestamo(prestamo);
                 lista.add(pago);
             }

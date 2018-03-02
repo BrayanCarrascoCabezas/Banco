@@ -41,7 +41,7 @@ public class CiudadImpl implements ICiudad{
     @Override
     public int modificar(Ciudad ciudad) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "update  ciudad set id_ciudad=?,nombre=? where id_ciudad=?";
+        String sql = "update  ciudad set idCiudad=?,nombre=? where idCiudad=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, ciudad.getId_ciudad()));
         lstPar.add(new Parametro(2, ciudad.getNombre()));
@@ -61,7 +61,7 @@ public class CiudadImpl implements ICiudad{
     @Override
     public int eliminar(Ciudad ciudad) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE * FROM ciudad  where id_ciudad=?";
+         String sql = "DELETE * FROM ciudad  where idCiudad=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, ciudad.getId_ciudad()));       
         lstPar.add(new Parametro(1, ciudad.getNombre()));       
@@ -83,7 +83,7 @@ public class CiudadImpl implements ICiudad{
     @Override
     public Ciudad obtener(int codigo) throws Exception {
         Ciudad ciudad = null;
-         String sql = "select id_ciudad, nombre from ciudad where id_ciudad=?"; 
+         String sql = "select * from ciudad where idCiudad=?"; 
           List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -107,7 +107,7 @@ public class CiudadImpl implements ICiudad{
     @Override
     public List<Ciudad> obtener() throws Exception {
         List<Ciudad> lista = new ArrayList<>();
-         String sql = "select id_ciudad, nombre from ciudad";        
+         String sql = "select * from ciudad";        
         Conexion con = null;
         try {
             con = new Conexion();

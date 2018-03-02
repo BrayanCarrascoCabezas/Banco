@@ -52,9 +52,9 @@ public class ClienteImpl implements ICliente{
     public int modificar(Cliente cliente) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE cliente"
-                + "   SET codigo_cliente=?, cedula=?, nombres=?, apellidos=?, celular=?, "
+                + "   SET idCliente=?, cedula=?, nombre=?, apellido=?, celular=?, "
                 + "email=?,cod_prestamo"
-                + " where codigo_cliente=?";
+                + " where idCliente=?";
         List<Parametro> lstPar = new ArrayList<>();
        lstPar.add(new Parametro(1, cliente.getCodigo_cliente()));
         lstPar.add(new Parametro(2, cliente.getCedula()));
@@ -81,7 +81,7 @@ public class ClienteImpl implements ICliente{
     @Override
     public int eliminar(Cliente cliente) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM cliente  where codigo_cliente=?";
+         String sql = "DELETE * FROM cliente  where idCliente=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cliente.getCodigo_cliente()));       
         Conexion con = null;
@@ -102,7 +102,7 @@ public class ClienteImpl implements ICliente{
     @Override
     public Cliente obtener(int codigo) throws Exception {
         Cliente cliente = null;
-        String sql = "SELECT *   FROM cliente where codigo_cliente=?;";
+        String sql = "SELECT *   FROM cliente where idCliente=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;

@@ -23,7 +23,7 @@ public class CuentaImpl implements ICuenta{
      
     public int insertar(Cuenta cuenta) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into cuenta  values "
+        String sql = "insert into cuentas  values "
                 + "(?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cuenta.getCodigo_cuenta()));
@@ -46,11 +46,11 @@ public class CuentaImpl implements ICuenta{
     @Override
     public int modificar(Cuenta cuenta) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE cuenta"
-                + "   SET codigo_cuenta=?, codigo_cliente=? where id_cuenta=?";
+        String sql = "UPDATE cuentas"
+                + "   SET idCliente=? where idCuenta=?";
         List<Parametro> lstPar = new ArrayList<>();
-        lstPar.add(new Parametro(1, cuenta.getCodigo_cuenta()));
-        lstPar.add(new Parametro(2, cuenta.getCliente().getCodigo_cliente()));
+        lstPar.add(new Parametro(2, cuenta.getCodigo_cuenta()));
+        lstPar.add(new Parametro(1, cuenta.getCliente().getCodigo_cliente()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -69,7 +69,7 @@ public class CuentaImpl implements ICuenta{
     @Override
     public int eliminar(Cuenta cuenta) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM cuenta  where codigo_cuenta=?";
+         String sql = "DELETE * FROM cuentas  where idCuenta=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cuenta.getCodigo_cuenta()));       
         Conexion con = null;
@@ -90,7 +90,7 @@ public class CuentaImpl implements ICuenta{
     @Override
     public Cuenta obtener(int codigo) throws Exception {
         Cuenta cuenta = null;
-        String sql = "SELECT *   FROM cuenta where codigo_cuenta=?;";
+        String sql = "SELECT *   FROM cuentas where idCuenta=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -118,7 +118,7 @@ public class CuentaImpl implements ICuenta{
     @Override
     public List<Cuenta> obtener() throws Exception {
         List<Cuenta> lista = new ArrayList<>();
-         String sql = "SELECT *   FROM cuenta ";        
+         String sql = "SELECT *   FROM cuentas ";        
         Conexion con = null;
         try {
             con = new Conexion();

@@ -50,11 +50,11 @@ public class SucursalImpl implements ISucursal{
     public int modificar(Sucursal sucursal) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE sucursales"
-                + "   SET idsucursal=?, id_empleado=?, id_ciudad=? where idSucursal=?";
+                + "   SET idEmpleado=?, idCiudad=? where idSucursal=?";
         List<Parametro> lstPar = new ArrayList<>();
-     lstPar.add(new Parametro(1, sucursal.getId_sucursal()));
-        lstPar.add(new Parametro(2, sucursal.getEmpleado().getId_empleado()));
-        lstPar.add(new Parametro(3, sucursal.getCiudad().getId_ciudad()));
+     lstPar.add(new Parametro(3, sucursal.getId_sucursal()));
+        lstPar.add(new Parametro(1, sucursal.getEmpleado().getId_empleado()));
+        lstPar.add(new Parametro(2, sucursal.getCiudad().getId_ciudad()));
         Conexion con = null;
         try {
             con = new Conexion();

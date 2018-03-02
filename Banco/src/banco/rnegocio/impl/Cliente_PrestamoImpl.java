@@ -50,7 +50,7 @@ public class Cliente_PrestamoImpl implements ICliente_Prestamo{
     public int modificar(Cliente_Prestamo cliente_prestamo) throws Exception {
         int numFilasAfectadas = 0;
         String sql = "UPDATE cliente_prestamo"
-                + "   SET id_cliente_prestamo=?, id_cliente=?, id_prestamo=? where idcliente_prestamo=?";
+                + "   SET idClienteprestamo=?, idCliente=?, idPrestamo=? where idClienteprestamo=?";
         List<Parametro> lstPar = new ArrayList<>();
          lstPar.add(new Parametro(1, cliente_prestamo.getIdcliente_prestamo()));
         lstPar.add(new Parametro(2, cliente_prestamo.getCliente().getCodigo_cliente()));
@@ -73,7 +73,7 @@ public class Cliente_PrestamoImpl implements ICliente_Prestamo{
     @Override
     public int eliminar(Cliente_Prestamo cliente_prestamo) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM cliente_prestamo  where idcliente_prestamo=?";
+         String sql = "DELETE * FROM cliente_prestamo  where idClienteprestamo=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cliente_prestamo.getIdcliente_prestamo()));       
         Conexion con = null;
@@ -94,7 +94,7 @@ public class Cliente_PrestamoImpl implements ICliente_Prestamo{
     @Override
     public Cliente_Prestamo obtener(int codigo) throws Exception {
         Cliente_Prestamo cliente_prestamo = null;
-        String sql = "SELECT *   FROM cliente_prestamo where idcliente_prestamo=?;";
+        String sql = "SELECT *   FROM cliente_prestamo where idClienteprestamo=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;

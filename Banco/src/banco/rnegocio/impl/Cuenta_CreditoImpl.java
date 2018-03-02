@@ -49,9 +49,9 @@ public class Cuenta_CreditoImpl implements ICuenta_Credito{
     @Override
     public int modificar(Cuenta_Credito cuenta_Credito) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE cuenta_Credito"
-                + "   SET n_cuenta=?, codigo_cuenta=?, saldo=?, u_sobregiro=?, "
-                        + " where n_cuenta=?";
+        String sql = "UPDATE cuenta_credito"
+                + "   SET idCuenta=?, saldo=?, valor_sobregiro=?, "
+                        + " where idCuentacredito=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cuenta_Credito.getN_cuenta()));
         lstPar.add(new Parametro(2, cuenta_Credito.getCuenta().getCodigo_cuenta()));
@@ -75,7 +75,7 @@ public class Cuenta_CreditoImpl implements ICuenta_Credito{
     @Override
 public int eliminar(Cuenta_Credito cuenta_Credito) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM cuenta_credito  where n_cuenta=?";
+         String sql = "DELETE FROM cuenta_credito  where idCuentacredito=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cuenta_Credito.getN_cuenta()));       
         Conexion con = null;
@@ -96,7 +96,7 @@ public int eliminar(Cuenta_Credito cuenta_Credito) throws Exception {
     @Override
     public Cuenta_Credito obtener(int codigo) throws Exception {
         Cuenta_Credito cuenta_Credito = null;
-        String sql = "SELECT *   FROM cuenta_credito where n_cuenta=?;";
+        String sql = "SELECT *   FROM cuenta_credito where idCuentacredito=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -128,7 +128,7 @@ public int eliminar(Cuenta_Credito cuenta_Credito) throws Exception {
     
     public List<Cuenta_Credito> obtener() throws Exception {
         List<Cuenta_Credito> lista = new ArrayList<>();
-         String sql = "SELECT *   FROM cuenta_Credito ";        
+         String sql = "SELECT *   FROM cuenta_credito ";        
         Conexion con = null;
         try {
             con = new Conexion();

@@ -22,7 +22,7 @@ public class Cuenta_AhorrosImpl implements ICuenta_ahorros{
     
       public int insertar(Cuenta_Ahorros cuenta_Ahorros) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into cuenta_Ahorros  values "
+        String sql = "insert into cuenta_ahorro  values "
                 + "(?,?,?,?)";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cuenta_Ahorros.getN_cuenta()));
@@ -48,9 +48,9 @@ public class Cuenta_AhorrosImpl implements ICuenta_ahorros{
     @Override
     public int modificar(Cuenta_Ahorros cuenta_Ahorros) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE cuenta_Ahorros"
-                + "   SET n_cuenta=?, codigo_cuenta=?, saldo=?, interes=?, "
-                        + " where id_cuenta_Ahorros=?";
+        String sql = "UPDATE cuenta_ahorro"
+                + "   SET  idCuenta=?, saldo=?, interes=?, "
+                        + " where idCuentaahorros=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cuenta_Ahorros.getN_cuenta()));
         lstPar.add(new Parametro(2, cuenta_Ahorros.getCuenta().getCodigo_cuenta()));
@@ -74,7 +74,7 @@ public class Cuenta_AhorrosImpl implements ICuenta_ahorros{
     @Override
 public int eliminar(Cuenta_Ahorros cuenta_Ahorros) throws Exception {
         int numFilasAfectadas = 0;
-         String sql = "DELETE FROM cuenta_Ahorros  where n_cuenta=?";
+         String sql = "DELETE FROM cuenta_ahorro  where idCuentaahorros=?";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, cuenta_Ahorros.getN_cuenta()));       
         Conexion con = null;
@@ -95,7 +95,7 @@ public int eliminar(Cuenta_Ahorros cuenta_Ahorros) throws Exception {
     @Override
     public Cuenta_Ahorros obtener(int codigo) throws Exception {
         Cuenta_Ahorros cuenta_Ahorros = null;
-        String sql = "SELECT *   FROM cuenta_Ahorros where n_cuenta=?;";
+        String sql = "SELECT *   FROM cuenta_ahorro where idCuentaahorros=?;";
         List<Parametro> lstPar = new ArrayList<>();
         lstPar.add(new Parametro(1, codigo));
         Conexion con = null;
@@ -127,7 +127,7 @@ public int eliminar(Cuenta_Ahorros cuenta_Ahorros) throws Exception {
     
     public List<Cuenta_Ahorros> obtener() throws Exception {
         List<Cuenta_Ahorros> lista = new ArrayList<>();
-         String sql = "SELECT *   FROM cuenta_Ahorros ";        
+         String sql = "SELECT *   FROM cuenta_ahorro ";        
         Conexion con = null;
         try {
             con = new Conexion();
