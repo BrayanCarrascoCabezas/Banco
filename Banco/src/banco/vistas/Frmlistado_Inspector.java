@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package banco.vistas;
+
 import javafx.application.*;
 import javafx.event.*;
 import javafx.scene.*;
@@ -20,69 +21,51 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.stage.*;
 import javafx.scene.image.*;
+import banco.rnegocio.dao.*;
 import banco.rnegocio.entidades.*;
 import banco.rnegocio.impl.*;
 import banco.accesodatos.*;
-import banco.rnegocio.dao.IInspector;
+import java.awt.BorderLayout;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
+public class Frmlistado_Inspector extends JInternalFrame {
+  JLabel titulo;
+    JTable tabla;
+    DefaultTableModel modelo;
 
-public class Frmlistado_Inspector {
-    
-    private TableView<Inspector> tblInspector;
-    private Label titulo;
-    private TableColumn<Inspector, Integer> cmlCodinspector;
-    private TableColumn<Inspector, String> cmlNombre;
-    private TableColumn<Inspector, String> cmlDireccion;
-    private TableColumn<Inspector, String> cmlTitulo;
+    public Frmlistado_Inspector() {
 
-    private TableColumn<Inspector, Prestamo> cmlcod_prestamo;
-  
+        this.setSize(800, 600);
+        this.setLayout(new BorderLayout());
+        this.setClosable(true);
+        titulo = new JLabel("LISTADO DE INSPECTORES");
+        tabla = new JTable();
+        this.add(titulo, BorderLayout.NORTH);
+        this.add(tabla, BorderLayout.CENTER);
 
-    private VBox pnlFinal;
-    
-      public Frmlistado_Inspector() {
+        cargarTabla();
 
-        titulo = new Label("LISTADO DE INSPECTOR");
-        titulo.setFont(Font.font("News701 BT", 20));
-        tblInspector = new TableView();
-        cmlCodinspector = new TableColumn<>("Codigo Inspector");
-        cmlNombre = new TableColumn<>("Nombre");
-        cmlDireccion = new TableColumn<>("Direccion");
-        cmlTitulo = new TableColumn<>("Titulo");
-        cmlcod_prestamo = new TableColumn<>("Prestamo");
-  
-        tblInspector.getColumns().addAll(cmlCodinspector ,cmlNombre, cmlDireccion, cmlTitulo, cmlcod_prestamo);
-        cargarInspector();
-        pnlFinal = new VBox();
-        Image fondoFinal = new Image("file:src\\kardex\\multimedia\\images\\fondo.jpg");
-        BackgroundImage fondo = new BackgroundImage(fondoFinal, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        pnlFinal.setBackground(new Background(fondo));
-        pnlFinal.setStyle("-fx-padding: 10; -fx-border-color: orange ; -fx-border-width: 2px");
-        pnlFinal.getChildren().addAll(titulo, tblInspector);
-        pnlFinal.setAlignment(Pos.CENTER);
     }
 
-    public VBox getPnlFinal() {
-        return pnlFinal;
-    }
+    public void cargarTabla() {
+        modelo = new DefaultTableModel();
 
-    public void cargarInspector() {
-        List<Inspector> listInspector = new ArrayList<>();
-        IInspector inDao = new InspectorImpl();
 
+        List<Inspector> lista = new ArrayList<>();
         try {
-            listInspector = inDao.obtener();
-            cmlCodinspector.setCellValueFactory(new PropertyValueFactory<>("codigoInspector"));
-            cmlNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
-            cmlDireccion.setCellValueFactory(new PropertyValueFactory<>("Direcion"));
-            cmlTitulo.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
-            cmlcod_prestamo.setCellValueFactory(new PropertyValueFactory<>("Prestamo"));
-            tblInspector.getItems().addAll(listInspector);
+            IInspector estDao = new InspectorImpl();
+            lista = estDao.obtener();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            Group ptnError = new Group();
-            ptnError.getChildren().add(new Label("Error: " + e.getMessage()));
-            Scene error = new Scene(ptnError, 0, 0);
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
-    }
+        for (Inspector est : lista) {
+            modelo.addRow(new Object[]{est.getCodigo(),est.getNombre(),est.getDireccion(),est.getTitulo(),est.getPrestamo().getId_prestamo()});
+        }
+        tabla.setModel(modelo);
 }
+    }

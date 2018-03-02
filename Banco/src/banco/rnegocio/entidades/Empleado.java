@@ -66,5 +66,10 @@ private Date antiguedad;
         this.antiguedad = antiguedad;
     }
 
+    @Override
+    public String toString() {
+        return nombres;
+    }
+
 }
 

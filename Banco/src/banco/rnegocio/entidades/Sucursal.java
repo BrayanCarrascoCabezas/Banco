@@ -48,6 +48,11 @@ public class Sucursal {
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
     }
+
+    @Override
+    public String toString() {
+        return "Sucursal{" + "id_sucursal=" + id_sucursal + '}';
+    }
     
 }
 
