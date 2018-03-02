@@ -1,76 +1,57 @@
 
 package banco.vistas;
 
-import javafx.application.*;
-import javafx.event.*;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import java.util.*;
-import javafx.scene.text.*;
-import javafx.scene.paint.*;
-import java.lang.reflect.*;
-import java.text.*;
-import javafx.beans.*;
-import javafx.collections.*;
-import javafx.geometry.*;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.*;
-import javafx.stage.*;
-import javafx.scene.image.*;
-import banco.rnegocio.entidades.*;
-import banco.rnegocio.impl.*;
-import banco.accesodatos.*;
 import banco.rnegocio.dao.ICiudad;
+import banco.rnegocio.entidades.Ciudad;
+import banco.rnegocio.impl.CiudadImpl;
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class FrmListado_Ciudad extends JInternalFrame{
-    private TableView<Ciudad> tblCiudad;
-    private Label titulo;
-    private TableColumn<Ciudad, Integer> cmlCodCiudad;
-    private TableColumn<Ciudad, String> cmlNombreCiudad;
-    
-    private VBox pnlFinal;
+ 
+    JLabel titulo;
+    JTable tabla;
+    DefaultTableModel modelo;
 
-    
     public FrmListado_Ciudad() {
 
-        titulo = new Label("LISTADO DE CIUDAD");
-        titulo.setFont(Font.font("News701 BT", 20));
-        tblCiudad = new TableView();
-        cmlCodCiudad = new TableColumn<>("Codigo");
-        cmlNombreCiudad = new TableColumn<>("Nombre");
-     
-        tblCiudad.getColumns().addAll(cmlCodCiudad, cmlNombreCiudad);
-        cargarCiudad();
-        pnlFinal = new VBox();
-       
-     
-     
-       
-        pnlFinal.getChildren().addAll(titulo, tblCiudad);
-        pnlFinal.setAlignment(Pos.CENTER);
+        this.setSize(800, 600);
+        this.setLayout(new BorderLayout());
+        this.setClosable(true);
+        titulo = new JLabel("LISTADO DE CIUDADES");
+        tabla = new JTable();
+        this.add(titulo, BorderLayout.NORTH);
+        this.add(tabla, BorderLayout.CENTER);
+
+        cargarTabla();
+
     }
 
-    public VBox getPnlFinal() {
-        return pnlFinal;
-    }
+    public void cargarTabla() {
+        modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
 
-    public void cargarCiudad() {
-        List<Ciudad> listCiudad = new ArrayList<>();
-        ICiudad ciDao = new CiudadImpl();
+        modelo.addColumn("NOMBRE");
 
+
+        List<Ciudad> lista = new ArrayList<>();
         try {
-            listCiudad = ciDao.obtener();
-            cmlCodCiudad.setCellValueFactory(new PropertyValueFactory<>("codigoCiudad"));
-            cmlNombreCiudad.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-           
-            tblCiudad.getItems().addAll(listCiudad);
+            ICiudad estDao = new CiudadImpl();
+            lista = estDao.obtener();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            Group ptnError = new Group();
-            ptnError.getChildren().add(new Label("Error: " + e.getMessage()));
-            Scene error = new Scene(ptnError, 0, 0);
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
+        for (Ciudad est : lista) {
+            modelo.addRow(new Object[]{est.getId_ciudad(), est.getNombre().toString()});
+        }
+        tabla.setModel(modelo);
     }
 }
 

@@ -677,11 +677,11 @@ public class FrmMenuPrincipal extends JFrame {
         frm.setVisible(true);
     }
     public void mniNuevoPagoActionPerformed(ActionEvent e) {
-//        FrmPagoNuevo frm = new FrmPagoNuevo();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmPagoNuevo frm = new FrmPagoNuevo();
+
+        dkpEscritorio.add(frm);
+
+        frm.setVisible(true);
     }
     public void mniNuevoPrestamoActionPerformed(ActionEvent e) {
         FrmPrestamoNuevo frm = new FrmPrestamoNuevo();
@@ -704,9 +704,9 @@ public class FrmMenuPrincipal extends JFrame {
     }
     
     public void mniCuentaListaActionPerformed(ActionEvent e) {
-//        FrmCuentaLista frm = new FrmCuentaLista();
-//        dkpEscritorio.add(frm);
-//        frm.setVisible(true);
+        Frmlistado_Cuenta frm = new Frmlistado_Cuenta();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
     }
     
     public void mniDetalle_PrestamoListaActionPerformed(ActionEvent e) {
@@ -718,15 +718,15 @@ public class FrmMenuPrincipal extends JFrame {
     
     
     public void mniClienteListaActionPerformed(ActionEvent e) {
-//        FrmClienteLista frm = new FrmClienteLista();
-//        dkpEscritorio.add(frm);
-//        frm.setVisible(true);
+        Frmlistado_Cliente frm = new Frmlistado_Cliente();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
     }
     
     public void mniCliente_PrestamoListaActionPerformed(ActionEvent e) {
-//        FrmCliente_PrestamoLista frm = new FrmCliente_PrestamoLista();
-//        dkpEscritorio.add(frm);
-//        frm.setVisible(true);
+        Listado_Cliente_Prestamo frm = new Listado_Cliente_Prestamo();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
     }
     
     public void mniInspectorListaActionPerformed(ActionEvent e) {

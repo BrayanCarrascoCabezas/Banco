@@ -37,14 +37,14 @@ public class FrmSucursalNueva extends JInternalFrame{
     JComboBox<Sucursal> cmbciudad;
     List<Ciudad> lstciudad;
         public FrmSucursalNueva(){
-        this.setSize(200,200);
+        this.setSize(250,200);
         this.setLayout(new BorderLayout());
      
         pnlSuperior= new JPanel();
         pnlCentral= new JPanel();
         pnlInferior= new JPanel();
         pnlSuperior.setLayout(new GridLayout(1, 1, 5, 5));
-        pnlCentral.setLayout(new GridLayout(2, 2, 5, 5));
+        pnlCentral.setLayout(new GridLayout(6, 2, 5, 5));
         pnlInferior.setLayout(new GridLayout(1,2,5,5));     
         
         lblTitulo = new JLabel("Datos Sucursal");

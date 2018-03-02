@@ -5,73 +5,58 @@
  */
 package banco.vistas;
 
-import javafx.application.*;
-import javafx.event.*;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import java.util.*;
-import javafx.scene.text.*;
-import javafx.scene.paint.*;
-import java.lang.reflect.*;
-import java.text.*;
-import javafx.beans.*;
-import javafx.collections.*;
-import javafx.geometry.*;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.*;
-import javafx.stage.*;
-import javafx.scene.image.*;
+
 import banco.rnegocio.entidades.*;
 import banco.rnegocio.impl.*;
-import banco.accesodatos.*;
-import banco.rnegocio.dao.ICuenta;
 
-public class Frmlistado_Cuenta {
+
+import banco.rnegocio.dao.ICuenta;
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class Frmlistado_Cuenta extends JInternalFrame {
     
-    private TableView<Cuenta> tblCuenta;
-    private Label titulo;
-    private TableColumn<Cuenta, Integer> cmlCodCuenta;
-    private TableColumn<Cuenta, Cliente> cmlcod_cliente;
-    private VBox pnlFinal;
-    
+     JLabel titulo;
+    JTable tabla;
+    DefaultTableModel modelo;
+
     public Frmlistado_Cuenta() {
 
-        titulo = new Label("LISTADO DE CUENTA");
-        titulo.setFont(Font.font("News701 BT", 20));
-        tblCuenta = new TableView();
-        cmlCodCuenta = new TableColumn<>("Codigo Cuenta");
-        cmlcod_cliente = new TableColumn<>("Codigo Cliente");
-       
-        tblCuenta.getColumns().addAll(cmlCodCuenta, cmlcod_cliente);
-        cargarCuenta();
-        pnlFinal = new VBox();
-        Image fondoFinal = new Image("file:src\\kardex\\multimedia\\images\\fondo.jpg");
-        BackgroundImage fondo = new BackgroundImage(fondoFinal, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        pnlFinal.setBackground(new Background(fondo));
-        pnlFinal.setStyle("-fx-padding: 10; -fx-border-color: orange ; -fx-border-width: 2px");
-        pnlFinal.getChildren().addAll(titulo, tblCuenta);
-        pnlFinal.setAlignment(Pos.CENTER);
+        this.setSize(800, 600);
+        this.setLayout(new BorderLayout());
+        this.setClosable(true);
+        titulo = new JLabel("LISTADO DE CUENTA");
+        tabla = new JTable();
+        this.add(titulo, BorderLayout.NORTH);
+        this.add(tabla, BorderLayout.CENTER);
+
+        cargarTabla();
+
     }
 
-    public VBox getPnlFinal() {
-        return pnlFinal;
-    }
+    public void cargarTabla() {
+        modelo = new DefaultTableModel();
 
-    public void cargarCuenta() {
-        List<Cuenta> listCuenta = new ArrayList<>();
-        ICuenta cuDao = new CuentaImpl();
 
+
+        List<Cuenta> lista = new ArrayList<>();
         try {
-            listCuenta = cuDao.obtener();
-            cmlCodCuenta.setCellValueFactory(new PropertyValueFactory<>("codigo cuenta"));
-            cmlcod_cliente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
-            tblCuenta.getItems().addAll(listCuenta);
+            ICuenta estDao = new CuentaImpl();
+            lista = estDao.obtener();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            Group ptnError = new Group();
-            ptnError.getChildren().add(new Label("Error: " + e.getMessage()));
-            Scene error = new Scene(ptnError, 0, 0);
+
+            JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
+        for (Cuenta est : lista) {
+            modelo.addRow(new Object[]{est.getCodigo_cuenta(), est.getCliente().toString()});
+        }
+        tabla.setModel(modelo);
     }
 }
 

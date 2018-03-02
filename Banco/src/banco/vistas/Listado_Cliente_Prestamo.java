@@ -5,44 +5,33 @@
  */
 package banco.vistas;
 
-import javafx.application.*;
-import javafx.event.*;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import java.util.*;
-import javafx.scene.text.*;
-import javafx.scene.paint.*;
-import java.lang.reflect.*;
-import java.text.*;
-import javafx.beans.*;
-import javafx.collections.*;
-import javafx.geometry.*;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.*;
-import javafx.stage.*;
-import javafx.scene.image.*;
-import banco.rnegocio.dao.*;
-import banco.rnegocio.entidades.*;
-import banco.rnegocio.impl.*;
-import banco.accesodatos.*;
+import banco.rnegocio.dao.ICliente_Prestamo;
+import banco.rnegocio.entidades.Cliente_Prestamo;
+import banco.rnegocio.impl.Cliente_PrestamoImpl;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Frmlistado_Cliente extends JInternalFrame {
-  JLabel titulo;
+/**
+ *
+ * @author Usuario
+ */
+public class Listado_Cliente_Prestamo extends JInternalFrame{
+     JLabel titulo;
     JTable tabla;
     DefaultTableModel modelo;
 
-    public Frmlistado_Cliente() {
+    public Listado_Cliente_Prestamo() {
 
         this.setSize(800, 600);
         this.setLayout(new BorderLayout());
         this.setClosable(true);
-        titulo = new JLabel("LISTADO DE CLIENTES");
+        titulo = new JLabel("LISTADO DE CLIENTE PRESTAMOS");
         tabla = new JTable();
         this.add(titulo, BorderLayout.NORTH);
         this.add(tabla, BorderLayout.CENTER);
@@ -55,18 +44,18 @@ public class Frmlistado_Cliente extends JInternalFrame {
         modelo = new DefaultTableModel();
 
 
-        List<Cliente> lista = new ArrayList<>();
+
+        List<Cliente_Prestamo> lista = new ArrayList<>();
         try {
-            ICliente estDao = new ClienteImpl();
+            ICliente_Prestamo estDao = new Cliente_PrestamoImpl();
             lista = estDao.obtener();
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
-        for (Cliente est : lista) {
-            modelo.addRow(new Object[]{est.getCodigo_cliente(),est.getPrestamo().getId_prestamo(),est.getNombres(),est.getApellidos(),est.getCedula(),est.getEmail(),est.getCelular()});
+        for (Cliente_Prestamo est : lista) {
+            modelo.addRow(new Object[]{est.getIdcliente_prestamo(), est.getCliente(),est.getPrestamo().toString()});
         }
         tabla.setModel(modelo);
-}
     }
-    
+}

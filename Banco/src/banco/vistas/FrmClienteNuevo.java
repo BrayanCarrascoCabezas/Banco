@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FrmClienteNuevo extends JFrame{
+public class FrmClienteNuevo extends JInternalFrame{
     JLabel lblTitulo,lblCodigo,lblNombres,lblApellidos,lblCedula,lblCelular,lblEmail,lblPrestamo;
     JTextField txtCodigo,txtNombres,txtApellidos,txtCedula,txtCelular,txtEmail;
     JComboBox <Prestamo>cmbPrestamo;
@@ -105,7 +105,7 @@ public class FrmClienteNuevo extends JFrame{
         this.add(pnlSuperior, BorderLayout.NORTH);
         this.add(pnlCentral, BorderLayout.CENTER);
         this.add(pnlInferior, BorderLayout.SOUTH);  
-//        this.setClosable(true);
+        this.setClosable(true);
     }
  
     public void btnAceptarActionListener(ActionEvent e){
@@ -149,10 +149,10 @@ public class FrmClienteNuevo extends JFrame{
 }
     
     
-    public static void main(String[] args) {
-        FrmClienteNuevo frm= new FrmClienteNuevo();
-        frm.setVisible(true);
-                
-    }
+//    public static void main(String[] args) {
+//        FrmClienteNuevo frm= new FrmClienteNuevo();
+//        frm.setVisible(true);
+//                
+//    }
 }
 

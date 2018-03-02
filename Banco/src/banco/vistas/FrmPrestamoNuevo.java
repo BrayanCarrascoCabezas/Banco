@@ -41,17 +41,18 @@ public class FrmPrestamoNuevo extends JInternalFrame {
     List<Sucursal> lstSucursal;
       
         public FrmPrestamoNuevo(){
-        this.setSize(200,200);
+        this.setSize(300,200);
         this.setLayout(new BorderLayout());
      
         pnlSuperior= new JPanel();
         pnlCentral= new JPanel();
         pnlInferior= new JPanel();
         pnlSuperior.setLayout(new GridLayout(1, 1, 5, 5));
-        pnlCentral.setLayout(new GridLayout(2, 2, 5, 5));
+        pnlCentral.setLayout(new GridLayout(6, 2, 5, 5));
         pnlInferior.setLayout(new GridLayout(1,2,5,5));     
         
         lblTitulo = new JLabel("Datos Ciudad");
+        lblSucursal = new JLabel("SUCURSAL");
                 
         lblId= new JLabel("CODIGO:");
         txtId = new JTextField(2);
@@ -63,6 +64,7 @@ public class FrmPrestamoNuevo extends JInternalFrame {
         txtFecha = new JTextField(2);
             lblValor= new JLabel(" VALOR:");
         txtValor = new JTextField(2);
+        
         CargarSucursal();
         cmbSucursal=new JComboBox(lstSucursal.toArray());
         btnLimpiar= new JButton("Limpiar");
@@ -79,7 +81,7 @@ public class FrmPrestamoNuevo extends JInternalFrame {
         pnlCentral.add(txtFecha);
            pnlCentral.add(lblValor);
         pnlCentral.add(txtValor);
-   pnlCentral.add(lblSucursal);
+        pnlCentral.add(lblSucursal);
         pnlCentral.add(cmbSucursal);
         
         btnAceptar.addActionListener(new ActionListener() {

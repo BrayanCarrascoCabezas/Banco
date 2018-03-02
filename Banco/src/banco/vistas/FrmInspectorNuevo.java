@@ -33,7 +33,7 @@ public class FrmInspectorNuevo extends JInternalFrame{
     JButton btnAceptar,btnLimpiar;
     
         public FrmInspectorNuevo(){
-        this.setSize(400,700);
+        this.setSize(300,400);
         this.setLayout(new BorderLayout());
      
         pnlSuperior= new JPanel();
