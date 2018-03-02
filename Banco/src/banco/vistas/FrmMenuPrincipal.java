@@ -140,6 +140,7 @@ public class FrmMenuPrincipal extends JFrame {
         
         mniBuscaCiudad = new JMenuItem("BUSCAR");
         mniListaCiudad = new JMenuItem("LISTAR");
+        
         mniListaCiudad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -156,6 +157,7 @@ public class FrmMenuPrincipal extends JFrame {
         mnCiudad.add(mniBuscaCiudad);
         mnCiudad.addSeparator();
         mnCiudad.add(mniListaCiudad);
+        
         /*ARTICULO*/
         mnCliente_Prestamo = new JMenu("Cliente_Prestamo");
         mnCliente_Prestamo.setForeground(Color.WHITE);
@@ -618,6 +620,7 @@ public class FrmMenuPrincipal extends JFrame {
 //        frm.setVisible(true);
     }
     
+    
     public void mniNuevoCiudadActionPerformed(ActionEvent e) {
         FrmCiudadNueva frm = new FrmCiudadNueva();
         dkpEscritorio.add(frm, BorderLayout.WEST);
@@ -625,11 +628,11 @@ public class FrmMenuPrincipal extends JFrame {
     }
 
     public void mniNuevoCliente_PrestamoActionPerformed(ActionEvent e) {
-//        FrmCliente_PrestamoNuevo frm = new FrmCliente_PrestamoNuevo();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmClienteNuevo frm = new FrmClienteNuevo();
+
+        dkpEscritorio.add(frm);
+
+        frm.setVisible(true);
     }
 
     public void mniNuevoClienteActionPerformed(ActionEvent e) {
@@ -689,7 +692,7 @@ public class FrmMenuPrincipal extends JFrame {
     }
 
     public void mniCiudadListaActionPerformed(ActionEvent e) {
-//        FrmCiudadLista frm = new FrmCiudadLista();
+//        FrmListado_Ciudad frm = new FrmListado_Ciudad();
 //        dkpEscritorio.add(frm);
 //        frm.setVisible(true);
     }

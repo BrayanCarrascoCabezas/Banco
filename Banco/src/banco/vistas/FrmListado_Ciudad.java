@@ -21,7 +21,9 @@ import banco.rnegocio.entidades.*;
 import banco.rnegocio.impl.*;
 import banco.accesodatos.*;
 import banco.rnegocio.dao.ICiudad;
-public class FrmListado_Ciudad {
+import javax.swing.JInternalFrame;
+
+public class FrmListado_Ciudad extends JInternalFrame{
     private TableView<Ciudad> tblCiudad;
     private Label titulo;
     private TableColumn<Ciudad, Integer> cmlCodCiudad;
