@@ -33,14 +33,14 @@ public class FrmEmpleadoNuevo extends JInternalFrame{
     
         public FrmEmpleadoNuevo(){
             
-        this.setSize(200,200);
+        this.setSize(250,350);
         this.setLayout(new BorderLayout());
      
         pnlSuperior= new JPanel();
         pnlCentral= new JPanel();
         pnlInferior= new JPanel();
         pnlSuperior.setLayout(new GridLayout(1, 1, 5, 5));
-        pnlCentral.setLayout(new GridLayout(2, 2, 5, 5));
+        pnlCentral.setLayout(new GridLayout(5, 2, 5, 5));
         pnlInferior.setLayout(new GridLayout(1,2,5,5));     
         
         lblTitulo = new JLabel("Datos Empleado");

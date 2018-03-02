@@ -665,11 +665,11 @@ public class FrmMenuPrincipal extends JFrame {
         frm.setVisible(true);
     }
     public void mniNuevoEmpleadoActionPerformed(ActionEvent e) {
-//        FrmEmpleadoNuevo frm = new FrmEmpleadoNuevo();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmEmpleadoNuevo frm = new FrmEmpleadoNuevo();
+
+        dkpEscritorio.add(frm, BorderLayout.WEST);
+
+        frm.setVisible(true);
     }
     public void mniNuevoInspectorActionPerformed(ActionEvent e) {
         FrmInspectorNuevo frm = new FrmInspectorNuevo();
@@ -684,17 +684,17 @@ public class FrmMenuPrincipal extends JFrame {
 //        frm.setVisible(true);
     }
     public void mniNuevoPrestamoActionPerformed(ActionEvent e) {
-//        FrmPrestamoNueva frm = new FrmPrestamoNueva();
-//
-//        dkpEscritorio.add(frm, BorderLayout.WEST);
-//
-//        frm.setVisible(true);
+        FrmPrestamoNuevo frm = new FrmPrestamoNuevo();
+
+        dkpEscritorio.add(frm, BorderLayout.WEST);
+
+        frm.setVisible(true);
     }
 
     public void mniCiudadListaActionPerformed(ActionEvent e) {
-//        FrmListado_Ciudad frm = new FrmListado_Ciudad();
-//        dkpEscritorio.add(frm);
-//        frm.setVisible(true);
+        FrmListado_Ciudad frm = new FrmListado_Ciudad();
+        dkpEscritorio.add(frm);
+        frm.setVisible(true);
     }
     
     public void mniCuenta_CreditoListaActionPerformed(ActionEvent e) {

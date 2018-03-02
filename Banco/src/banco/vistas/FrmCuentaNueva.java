@@ -5,13 +5,13 @@
  */
 package banco.vistas;
 
-import banco.rnegocio.dao.ICiudad;
+
 import banco.rnegocio.dao.ICliente;
 import banco.rnegocio.dao.ICuenta;
-import banco.rnegocio.entidades.Ciudad;
+
 import banco.rnegocio.entidades.Cliente;
 import banco.rnegocio.entidades.Cuenta;
-import banco.rnegocio.impl.CiudadImpl;
+
 import banco.rnegocio.impl.ClienteImpl;
 import banco.rnegocio.impl.CuentaImpl;
 import java.awt.BorderLayout;
@@ -122,8 +122,7 @@ public class FrmCuentaNueva extends JInternalFrame{
             try {
                 ICliente clientedao= new ClienteImpl();
                 lstCliente=clientedao.obtener();
-            } catch (Exception e) {System.out.println("ERROR"+e.getMessage());
-            }
+            } catch (Exception e) {      }
         
         };
 }

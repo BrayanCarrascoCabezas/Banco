@@ -84,5 +84,10 @@ public class Cliente {
     public void setPrestamo(Prestamo prestamo) {
         this.prestamo = prestamo;
     }
+
+    @Override
+    public String toString() {
+        return  nombres ;
+    }
     
 }
